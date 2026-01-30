@@ -26,17 +26,37 @@ Menyiapkan satu VM Ubuntu lokal (VMware) dan mengotomatisasi instalasi runtime a
 * Guest VM: Ubuntu (VMware)
 * Configuration Management: Ansible
 * Runtime: Node.js 18, PM2
+### Directory Structure
+
+Struktur direktori Part A dirancang mengikuti **Ansible Best Practices**, sehingga mudah dipahami, scalable, dan reusable.
+
+```
+part-a/
+├── ansible.cfg            # Konfigurasi Ansible (inventory, privilege escalation)
+├── inventory.ini          # Daftar host VM target
+├── playbooks/
+│   ├── runtime.yml        # Setup runtime (Node.js, PM2)
+│   └── deploy.yml         # Deploy & run aplikasi menggunakan PM2
+├── roles/
+│   └── runtime/
+│       └── tasks/
+│           └── main.yml   # Task utama instalasi & konfigurasi runtime
+└── README.md              # Dokumentasi Part A
+```
 
 ### Implementation
 
-* Ansible inventory digunakan untuk mendefinisikan target VM.
-* Role `runtime` bertanggung jawab untuk:
+* **inventory.ini** digunakan untuk mendefinisikan VM target.
+* **runtime.yml** memanggil role `runtime` untuk setup environment.
+* **roles/runtime/tasks/main.yml** berisi task modular (install Node.js, PM2, dependency).
+* **deploy.yml** bertanggung jawab untuk cloning repo aplikasi dan menjalankannya dengan PM2.
 
-  * Update package repository
-  * Install dependency dasar
-  * Install Node.js 18
-  * Install PM2 secara global
-  * Menjalankan aplikasi menggunakan PM2
+Pendekatan ini memisahkan:
+
+* *what to do* (playbook)
+* *how to do* (role)
+
+Sehingga konfigurasi lebih maintainable.
 
 ### Deliverables
 
