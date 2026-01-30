@@ -37,11 +37,11 @@ part-a/
 ├── playbooks/
 │   ├── runtime.yml        # Setup runtime (Node.js, PM2)
 │   └── deploy.yml         # Deploy & run aplikasi menggunakan PM2
-├── roles/
-│   └── runtime/
-│       └── tasks/
-│           └── main.yml   # Task utama instalasi & konfigurasi runtime
-└── README.md              # Dokumentasi Part A
+│   └──roles/
+│       └── runtime/
+│           └── tasks/
+│               └── main.yml   # Task utama instalasi & konfigurasi runtime
+└── 
 ```
 
 ### Implementation
