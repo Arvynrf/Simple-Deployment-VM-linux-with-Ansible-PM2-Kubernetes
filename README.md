@@ -4,11 +4,13 @@
 
 Repository ini berisi implementasi **DevOps Technical Test** yang mencakup provisioning VM, konfigurasi runtime aplikasi, CI/CD, containerization, deployment ke Kubernetes, serta visibility (monitoring dasar).
 
+Aplikasi simpel Node.js yang digunakan berada pada repository terpisah:
+👉 https://github.com/Arvynrf/simple-app-nodejs
+
 Arsitektur dibagi menjadi tiga bagian utama:
 
 * **Part A**: VM Provisioning & Configuration Management (Ansible)
 * **Part B**: CI/CD, Docker, dan Kubernetes Deployment (Minikube)
-* **Part C**: Visibility / Monitoring (Bonus)
 
 ---
 
