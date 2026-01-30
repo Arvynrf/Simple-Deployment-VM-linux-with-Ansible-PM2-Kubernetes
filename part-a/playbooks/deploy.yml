@@ -1,0 +1,19 @@
+- hosts: app_servers
+  become: yes
+  tasks:
+    - name: Clone repository
+      git:
+        repo: https://github.com/Arvynrf/simple-app-nodejs.git
+        dest: /var/www/node-app
+
+    - name: Install dependencies
+      npm:
+        path: /var/www/node-app
+
+    - name: Start app with PM2
+      shell: |
+        pm2 start app.js --name node-app
+        pm2 save
+      args:
+        chdir: /var/www/node-app
+      become_user: ubuntu
