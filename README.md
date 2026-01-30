@@ -109,41 +109,6 @@ Membangun pipeline CI/CD untuk build Docker image dan melakukan deployment aplik
   ```bash
   minikube service node-service
   ```
-
----
-
-## Part C – Visibility (Optional / Bonus)
-
-### Objective
-
-Menyediakan visibility dasar terhadap aplikasi dan runtime environment.
-
-### Implemented Visibility
-
-* **Application Health Check**
-
-  * Endpoint `/health` untuk memastikan aplikasi berjalan dengan normal
-
-* **Metrics Endpoint (Prometheus-ready)**
-
-  * Endpoint `/metrics` menggunakan `prom-client`
-  * Metrics dapat di-scrape oleh Prometheus jika dibutuhkan
-
-* **Logging**
-
-  * Logging menggunakan `stdout` container
-  * Log dapat diakses melalui:
-
-    ```bash
-    kubectl logs <pod-name>
-    ```
-
-### Deliverables
-
-* `/health` endpoint
-* `/metrics` endpoint
-* Kubernetes-native logging
-
 ---
 
 ## Architecture Summary
@@ -161,17 +126,7 @@ Developer -> GitHub -> GitHub Actions
            Node.js Application
 ```
 
----
-
-## Conclusion
-
-Technical test ini menunjukkan penerapan praktik DevOps end-to-end mulai dari provisioning VM, automation menggunakan Ansible, CI/CD pipeline, containerization, Kubernetes deployment, hingga visibility dasar aplikasi.
-
-Solusi ini dirancang **minimal namun production-aware**, sesuai dengan kebutuhan technical assessment.
-
----
 
 ## Notes
 
 * Deployment menggunakan Minikube bersifat lokal dan tidak menggunakan cloud load balancer.
-* Part C bersifat opsional dan diimplementasikan secara ringan untuk menjaga kesederhanaan sistem.
